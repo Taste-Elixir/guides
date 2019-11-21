@@ -1,3 +1,5 @@
 # Guides
 
-**TODO: Add description**
+## Generate page
+
+`mix docs -o docs`
