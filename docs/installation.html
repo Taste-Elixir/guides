@@ -72,7 +72,57 @@ Taste Elixir      </a>
   macOS
 </h2>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue, pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare, ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam viverra nisi, in interdum massa nibh nec erat.</p>
+<ol>
+<li>Install asdf.
+Asdf is a manager of multiple language runtimes.
+</li>
+</ol>
+<p>Follow the installation steps on: <a href="https://asdf-vm.com/#/core-manage-asdf-vm?id=install-asdf-vm">asdf installation guide</a> </p>
+<ol start="2">
+<li>Install Postgres
+</li>
+</ol>
+<pre><code class="nohighlight makeup elixir"><span class="n">brew</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">postgresql</span><span class="w">
+
+</span><span class="n">initdb</span><span class="w"> </span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">postgres</span><span class="w"> </span><span class="o">-</span><span class="nc">E</span><span class="w"> </span><span class="n">utf8</span></code></pre>
+<p>Create user for your database:</p>
+<pre><code class="nohighlight makeup elixir"><span class="n">brew</span><span class="w"> </span><span class="n">services</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="n">postgresql</span><span class="w">
+</span><span class="n">createuser</span><span class="w"> </span><span class="o">-</span><span class="n">s</span><span class="w"> </span><span class="n">postgres</span></code></pre>
+<ol start="3">
+<li>Install a plugin for Erlang:
+</li>
+</ol>
+<pre><code class="console">asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git</code></pre>
+<ol start="4">
+<li>Install Erlang:
+</li>
+</ol>
+<pre><code class="console">asdf install erlang 22.1</code></pre>
+<ol start="5">
+<li>Add a plugin for Elixir language:
+</li>
+</ol>
+<pre><code class="console">asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git</code></pre>
+<ol start="6">
+<li>Install newest version of Elixir:
+</li>
+</ol>
+<pre><code class="console">asdf install elixir 1.9.4-otp-22</code></pre>
+<ol start="7">
+<li>Add a plugin for NodeJS:
+</li>
+</ol>
+<pre><code class="nohighlight makeup elixir"><span class="n">asdf</span><span class="w"> </span><span class="n">plugin</span><span class="o">-</span><span class="n">add</span><span class="w"> </span><span class="n">nodejs</span><span class="w"> </span><span class="n">https</span><span class="ss">:/</span><span class="o">/</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">asdf</span><span class="o">-</span><span class="n">vm</span><span class="o">/</span><span class="n">asdf</span><span class="o">-</span><span class="n">nodejs</span><span class="o">.</span><span class="n">git</span></code></pre>
+<ol start="8">
+<li>Install NodeJS:
+</li>
+</ol>
+<pre><code class="nohighlight makeup elixir"><span class="n">asdf</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">nodejs</span><span class="w"> </span><span class="mf">12.13</span><span class="o">.</span><span class="mi">1</span></code></pre>
+<ol start="9">
+<li>Install Phoenix:
+</li>
+</ol>
+<pre><code class="console">mix archive.install hex phx_new 1.4.10</code></pre>
 <h2 id="linux" class="section-heading">
   <a href="#linux" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Linux
