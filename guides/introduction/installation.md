@@ -7,31 +7,58 @@ Asdf is a manager of multiple language runtimes.
 
 Follow the installation steps on: [asdf installation guide](https://asdf-vm.com/#/core-manage-asdf-vm?id=install-asdf-vm) 
 
-2. Install a plugin for Erlang:
+2. Install Postgres
+
+```
+brew install postgresql
+
+initdb /usr/local/var/postgres -E utf8
+```
+
+Create user for your database:
+
+```
+brew services start postgresql
+createuser -s postgres
+```
+
+3. Install a plugin for Erlang:
 
 ```console
 asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
 ```
 
-3. Install Erlang:
+4. Install Erlang:
 
 ```console
-asdf install erlang 22.1.6
+asdf install erlang 22.1
 ```
 
-4. Add a plugin for Elixir language:
+5. Add a plugin for Elixir language:
 
 ```console
 asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
 ```
 
-5. Install newest version of Elixir:
+6. Install newest version of Elixir:
 
 ```console
 asdf install elixir 1.9.4-otp-22
 ```
 
-6. Install Phoenix:
+7. Add a plugin for NodeJS:
+
+```
+asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+```
+
+8. Install NodeJS:
+
+```
+asdf install nodejs 12.13.1
+```
+
+9. Install Phoenix:
 
 ```console
 mix archive.install hex phx_new 1.4.10
