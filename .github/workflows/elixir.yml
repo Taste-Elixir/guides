@@ -27,7 +27,8 @@ jobs:
       uses: github-actions-x/commit@v2.1
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        push-branch: 'docs'
+        push-branch: 'master'
+        rebase: 'true'
         commit-message: 'publish docs'
         force-add: 'false'
         files: docs/
