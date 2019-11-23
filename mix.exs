@@ -19,7 +19,8 @@ defmodule Guides.MixProject do
         extra_section: "GUIDES",
         filter_prefix: "none",
         extras: extras(),
-        groups_for_extras: groups_for_extras()
+        groups_for_extras: groups_for_extras(),
+        javascript_config_path: nil
       ]
     ]
   end
