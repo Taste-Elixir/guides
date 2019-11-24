@@ -2,7 +2,7 @@
 
 **Coach:** Explain what is the relationship between HTML and Phoenix. What is Embedded Elixir [EEx](https://hexdocs.pm/eex/EEx.html)? What is MVC and how does this relate to it?
 
-App doesn't look very nice yet. We might use one of the existing CSS framework to make it nicer. See some examples of such frameworks:
+The app doesn't look very nice yet. We might use one of the existing CSS framework to make it nicer. See some examples of such frameworks:
 
 * [Bootstrap](https://getbootstrap.com/)
 * [Bulma](https://bulma.io/)
@@ -37,6 +37,6 @@ Add to one of HTML files, following snippet:
 </div>
 ```
 
-As a result of above, you should see 2 buttons: green and blue. Now, there is a time to play a bit with available classes in the [documentation](https://bulma.io/documentation/) and make our application beautiful.
+As a result of the above, you should see 2 buttons: green and blue. Now, there is time to play a bit with available classes in the [documentation](https://bulma.io/documentation/) and make our application nicer.
 
-Let's apply some CSS classes to aleady created pages.
+Let's apply some CSS classes to pages that have already been created.
