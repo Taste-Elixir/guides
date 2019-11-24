@@ -6,17 +6,17 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nibh augue, susci
 
 ## Tools
 
-Depending on where you are at in your programming journey here are some additional tools you may want to consider installing.
+Depending on where you are on your programming journey, here are some additional tools that you should consider installing.
 
 ### Text Editors
 
-A text editor is at the core of a developer's toolbox, so we shoud choose it carefully.
+A text editor is the core of every developer's toolbox, that's why it's important to choose it wisely.
 
 #### Visual Studio Code (Recomended)
 
 [Installation instruction.](https://code.visualstudio.com/docs/setup/setup-overview)
 
-Recommended extensions for editor ease to develoepment workflow.
+Recommended extensions to the editor that will ease the development workflow.
 
 - [ElixirLS](https://marketplace.visualstudio.com/items?itemName=JakeBecker.elixir-ls) - Elixir support with debugger, autocomplete, and more.
 - [LiveShare](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare) - Real-time collaborative development from the comfort of your favorite tools. Could help in pair programming with mentor during workshops.
@@ -36,11 +36,11 @@ Recommended extensions for editor ease to develoepment workflow.
 
 ## Try Elixir
 
-[Try Elixir course](http://try-elixir.herokuapp.com). This is meant to be an introduction to Elixir, to get familiar with basic concepts. Data is deleted after 5 minutes of idle and many Elixir modules are restricted for security reasons.
+[Try Elixir course](http://try-elixir.herokuapp.com). This is meant as an introduction to Elixir by getting familiar with basic concepts. Data is deleted after 5 minutes of being idle and many Elixir modules are restricted due to security reasons.
 
 ## Elixir Cheat-Sheet
 
-A collection of basic Elixir statements, data types, etc. to have them right in the range of your hand.
+A collection of basic Elixir statements, data types etc. to always have them at your fingertips.
 
 - https://devhints.io/elixir
 - https://learnxinyminutes.com/docs/elixir/
