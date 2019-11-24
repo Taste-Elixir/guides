@@ -1,14 +1,14 @@
 # Community
 
-Although the Elixir community is still rather young, its popularity is growing on quite significan pace.
+Although Elixir community is still quite young, its popularity is growing in a significant pace.
 
 ### Elixir Forum
 
-This is a main place for every Elixir and also Erlang programming language enthusiasts! (But not only) - https://elixirforum.com
+This is the best place to exchange knowledge for every Elixir and Erlang languages enthusiast! https://elixirforum.com
 
 ### Slack
 
-Elixir on Slack has 25834 registered users are so far. - https://elixir-slackin.herokuapp.com
+Elixir community on Slack currently has 25834 registered users so far. - https://elixir-slackin.herokuapp.com
 
 ### Conferences
 
@@ -24,3 +24,5 @@ Elixir on Slack has 25834 registered users are so far. - https://elixir-slackin.
 - [Elixir Wrocław](https://www.meetup.com/pl-PL/Elixir-Wroclaw/)
 - [Elixir Kraków](https://www.meetup.com/pl-PL/Elixir-Krakow/)
 - [ElixirWarsaw Meetup](https://www.meetup.com/pl-PL/ElixirWarsaw-Meetup/)
+
+And also many [others](https://github.com/elixir-lang/elixir/wiki/Meetups).
