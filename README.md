@@ -11,6 +11,10 @@
 - https://elixirschool.com/en/
 - https://curiosum.dev/blog/elixir-phoenix-liveview-messenger-part-1
 
+## Contibuting
+
+If you update markdown file names, you need to remember about updating file paths in the `mix.exs` file.
+
 ## Publish docs on Github Pages
 
 1. Install Github client - [Hub client](https://hub.github.com/):

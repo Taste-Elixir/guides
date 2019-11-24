@@ -39,10 +39,10 @@ defmodule Guides.MixProject do
       "guides/introduction/learning.md",
       "guides/introduction/community.md",
       "guides/create_an_app/1-setup.md",
-      "guides/create_an_app/2-scaffold.md",
-      "guides/create_an_app/3-query.md",
-      "guides/create_an_app/4-design.md",
-      "guides/create_an_app/5-channels.md",
+      "guides/create_an_app/2-channels.md",
+      "guides/create_an_app/3-persistence.md",
+      "guides/create_an_app/4-query.md",
+      "guides/create_an_app/5-design.md",
       "guides/create_an_app/6-uploads.md",
     ]
   end
