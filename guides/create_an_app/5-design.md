@@ -1,3 +1,42 @@
 # 5. Design
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue, pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare, ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam viverra nisi, in interdum massa nibh nec erat.
+**Coach:** Explain what is the relationship between HTML and Phoenix. What is Embedded Elixir [EEx](https://hexdocs.pm/eex/EEx.html)? What is MVC and how does this relate to it?
+
+The app doesn't look very nice yet. We might use one of the existing CSS framework to make it nicer. See some examples of such frameworks:
+
+* [Bootstrap](https://getbootstrap.com/)
+* [Bulma](https://bulma.io/)
+
+In this tutorial, we will use Bulma framework.
+
+Let's open a file: `assets/css/package.json`
+
+Add to the list of dependencies:
+```
+"bulma": "0.8.0"
+```
+
+Now open the terminal, and install a package with use of: `npm install` command.
+
+Remove from file: `assets/css/app.css` following line:
+```
+@import "./phoenix.css"
+```
+
+Add to the file: `assets/css/app.css`
+
+```
+@import "../node_modules/bulma/css/bulma.css"
+```
+
+Add to one of HTML files, following snippet:
+```html
+<div class="buttons">
+  <button class="button is-primary">Elixir is fun</button>
+  <button class="button is-link">Click me</button>
+</div>
+```
+
+As a result of the above, you should see 2 buttons: green and blue. Now, there is time to play a bit with available classes in the [documentation](https://bulma.io/documentation/) and make our application nicer.
+
+Let's apply some CSS classes to pages that have already been created.
