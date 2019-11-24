@@ -32,10 +32,4 @@ jobs:
         commit-message: 'publish docs'
         force-add: 'false'
         files: docs/    
-    - name: GitHub API Request
-      uses: octokit/request-action@v1.1.0
-      with:
-        route: POST /repos/Taste-Elixir/guides/pages/builds
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}        
-        
+       
