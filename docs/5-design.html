@@ -6,12 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="Taste Elixir v0.1.0">
-    <title>3. Query — Taste Elixir v0.1.0</title>
+    <title>5. Design — Taste Elixir v0.1.0</title>
     <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-6f68b80b25.js"></script>
-      <script src="docs_config.js"></script>
+    <script src="dist/sidebar_items-ad86e6bf4e.js"></script>
     <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
-    
   </head>
   <body data-type="extras">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -66,9 +64,31 @@ Taste Elixir      </a>
   <div class="content-outer">
     <div id="content" class="content-inner">
 
-
-<h1>3. Query</h1>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue, pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare, ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam viverra nisi, in interdum massa nibh nec erat.</p>
+<h1>5. Design</h1>
+<p><strong>Coach:</strong> Explain what is the relationship between HTML and Phoenix. What is Embedded Elixir <a href="https://hexdocs.pm/eex/EEx.html">EEx</a>? What is MVC and how does this relate to it?</p>
+<p>The app doesn&#39;t look very nice yet. We might use one of the existing CSS framework to make it nicer. See some examples of such frameworks:</p>
+<ul>
+<li><a href="https://getbootstrap.com/">Bootstrap</a>
+</li>
+<li><a href="https://bulma.io/">Bulma</a>
+</li>
+</ul>
+<p>In this tutorial, we will use Bulma framework.</p>
+<p>Let&#39;s open a file: <code class="inline">assets/css/package.json</code></p>
+<p>Add to the list of dependencies:</p>
+<pre><code class="nohighlight makeup elixir"><span class="ss">&quot;bulma&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.8.0&quot;</span></code></pre>
+<p>Now open the terminal, and install a package with use of: <code class="inline">npm install</code> command.</p>
+<p>Remove from file: <code class="inline">assets/css/app.css</code> following line:</p>
+<pre><code class="nohighlight makeup elixir"><span class="na">@import</span><span class="w"> </span><span class="s">&quot;./phoenix.css&quot;</span></code></pre>
+<p>Add to the file: <code class="inline">assets/css/app.css</code></p>
+<pre><code class="nohighlight makeup elixir"><span class="na">@import</span><span class="w"> </span><span class="s">&quot;../node_modules/bulma/css/bulma.css&quot;</span></code></pre>
+<p>Add to one of HTML files, following snippet:</p>
+<pre><code class="html">&lt;div class=&quot;buttons&quot;&gt;
+  &lt;button class=&quot;button is-primary&quot;&gt;Elixir is fun&lt;/button&gt;
+  &lt;button class=&quot;button is-link&quot;&gt;Click me&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+<p>As a result of the above, you should see 2 buttons: green and blue. Now, there is time to play a bit with available classes in the <a href="https://bulma.io/documentation/">documentation</a> and make our application nicer.</p>
+<p>Let&#39;s apply some CSS classes to pages that have already been created.</p>
       <footer class="footer">
         <p>
           <span class="line">
@@ -100,7 +120,5 @@ Taste Elixir      </a>
   </div>
 </section>
 </div>
-  
   </body>
 </html>
-

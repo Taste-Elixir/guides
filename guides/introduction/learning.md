@@ -21,6 +21,7 @@ Even if Elixir is rather a young programming language, there are a lot of materi
 - http://elixirsips.com/episodes.html
 - https://elixirschool.com/en/lessons/basics/basics/
 - https://exercism.io/my/tracks/elixir
+- https://www.pluralsight.com/courses/code-school-try-elixir
 
 #### Intermediate
 
