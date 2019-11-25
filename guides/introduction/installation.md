@@ -128,7 +128,7 @@ This guide provide instructions for Ubuntu, if you use different Unix-like syste
 
 ## Windows
 
-This guide provide instructions for Windows 10.
+This guide provides instructions for Windows 10.
 
   1.  Install Elixir language (it will install Erlang as well):
 
