@@ -1,6 +1,6 @@
 # 2. Channels
 
-Now that we have everything up and running we can start adding functionalities. The first thing we will focus on is the ability to communicate in Phoenix. This will be done via a Channel which uses websockets. Websockets create connections similar to a phone call, it means that they are always open or available. The other means of communication that are usually used on the web are more similar to sending snail mail-- a message is sent,  received and then a reply shows up. An example of this would be HTTP.
+Now that we have everything up and running we can start adding functionalities. The first thing we will focus on is the ability to communicate in Phoenix. This will be done via a Channel which uses websockets. Websockets create connections similar to a phone call, which means that they are always open or available. The other means of communication that are usually used on the web are more similar to sending snail mail-- a message is sent,  received and then a reply shows up. An example of this would be HTTP.
 
 **Coach:** Explain briefly these two ways of communication on the web, via websockets and HTTP. Elaborate on a high level abstraction using real life examples.
 
@@ -54,17 +54,17 @@ defmodule WorkshopsAppWeb.GeneralChannel do
 end
 ```
 
-Now that we have generated some code let's look at what it does. First the `general_channel.ex` is the channel equivalent of a controller in Phoenix, being that it handles websocket requests instead of http requests. On line **2** `:channel` is referring to the Phoenix channel function from `user_socket.ex` file. It takes a parameter which is used as a namespace for the websocket connections. In this instance the name space is **"general:lobby"**.
+Now that we have generated some code let's look at what it does. First the `general_channel.ex` is the channel equivalent of a controller in Phoenix, being that it handles websocket requests instead of http requests. On line **2** `:channel` is referring to the Phoenix channel function from `user_socket.ex` file. It takes a parameter which is used as a namespace for the websocket connections. In this instance the namespace is **"general:lobby"**.
 
 The next argument `WorkshopsAppWeb.GeneralChannel` is made up of two parts. The first part `WorkshopsAppWeb` is the name of the app with `-Web` as suffix indicating that we have separate directory containing all the abstractions related to communication with outside world . The second part is `GeneralChannel`. This is the name of the module that handles the logic related to any communication through this channel. In Phoenix, it’s conventional to namespace all your modules with your app name first as this prevents namespace errors.
 
 The file, `user_socket.ex`, is like the `router.ex` file, but for channels. The topic, for us it's `general`, allows clients, also known as web browsers, to subscribe to the channel. In the same way a path in a web request directs the request to the right controller, the topic directs the socket to the right module, in this case, `WorkshopsAppWeb.GeneralChannel`.
 
-Now, let’s look at the join function at line **4**. `def join ("general:lobby", payload, socket) do:` takes three arguments. The first argument, the name of the channel, **"general:lobby"**, makes it so that this function is only called when the client is joining the specific channel. The second argument, **payload** is the request from the user; it can contain auth credentials, a message or anything the user wants. Finally, it takes **socket**, which is the websocket connection. There’s call to `authorized?` function, which always returns true. Then, `{:ok, socket}` just returns a status and the websocket they are connecting to. **join** function always returns `{:ok, socket}` to allow all connections connect to the channel.
+Now, let’s look at the join function at line **4**. `def join ("general:lobby", payload, socket) do:` takes three arguments. The first argument, the name of the channel, **"general:lobby"**, makes it so that this function is only called when the client is joining the specific channel. The second argument, **payload** is the request from the user; it can contain auth credentials, a message or anything the user wants. Finally, it takes **socket**, which is the websocket connection. There’s a call to `authorized?` function, which always returns true. Then, `{:ok, socket}` just returns a status and the websocket they are connecting to. **join** function always returns `{:ok, socket}` to allow all connections to connect to the channel.
 
-Once a user joins a channel they can send messages to the channel and they’ll be received by one of the `handle_in` messages. The first one just returns the payload sent by the user back to them. The second one sends the payload to all the users subscribed to the channel. It’s the second that allows us to build our chat room with just a little frontend work. When you send a message to the chat room, this function sends it back to you and to everyone else in the channel.
+Once a user joins a channel they can send messages to the channel and they’ll be received by one of the `handle_in` messages. The first one just returns the payload sent by the user back to them. The second one sends the payload to all the users subscribed to the channel. It’s the second one that allows us to build our chat room with just a little frontend work. When you send a message to the chat room, this function sends it back to you and to everyone else in the channel.
 
-To handle the connections on the Client-side we’ll start by adding **jQuery** to our app. First of all lets install it via npm command inside `assets/` directory:
+To handle the connections on the Client-side we’ll start by adding **jQuery** to our app. First of all let's install it via npm command inside `assets/` directory:
 
 ```console
 cd assets/
