@@ -31,4 +31,5 @@ jobs:
         rebase: 'true'
         commit-message: 'publish docs'
         force-add: 'false'
-        files: docs/
+        files: docs/    
+       
