@@ -59,7 +59,7 @@ end
 
 Let's create a module, where we will create a message. Create a file, called: `conversations.ex` in the directory: `lib/your_app_name/`.
 
-```
+```elixir
 defmodule WorkshopsApp.Conversations do
   import Ecto.Query, warn: false
   alias WorkshopsApp.Repo
