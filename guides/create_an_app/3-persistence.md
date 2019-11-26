@@ -28,7 +28,7 @@ Add to the change function, following code:
 
 Then run the migration:
 
-```
+```console
 $ mix ecto.migrate
 ```
 
