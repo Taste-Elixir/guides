@@ -6,7 +6,7 @@ So now we have a basic chat app but once our session is closed all of our messag
 
 First, we’ll create a migration and some code to handle persistence. Migrations are pieces of code that create or change database columns. In Phoenix, we can invoke `mix phx.gen.context` from the terminal to generate a migration:
 
-```
+```console
 $ mix ecto.gen.migration CreateMessages
 ```
 
