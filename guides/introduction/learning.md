@@ -1,6 +1,6 @@
 # Learning
 
-Even if Elixir is rather a young programming language, there are a lot of materials to begin and continue learning. Here you can find selected books, articles, online courses and videos with a short descriptions, which will be really helpful while mastering Elixir.
+Even though Elixir is rather a young programming language, there are a lot of materials to start with and continue learning. Below you can find selected books, articles, online courses and videos with short descriptions, that will help you master Elixir.
 
 ## Books
 
@@ -30,13 +30,13 @@ Even if Elixir is rather a young programming language, there are a lot of materi
 
 ## Articles
 
-A story how to start learning Elixir with required materials
+A story how to learn Elixir with useful materials
 - https://medium.com/briisk/how-to-learn-elixir-or-the-tale-of-two-alchemists-and-one-master-66647bbc8177
 
 List of handy Elixir libraries
 - https://github.com/h4cc/awesome-elixir
 
-List of companies which use Elixir
+List of companies using Elixir
 - https://elixir-companies.com/en
 
 Reasons why huge companies choose Elixir
@@ -44,7 +44,7 @@ Reasons why huge companies choose Elixir
 
 ## Videos
 
-Elixir next five years
+Elixir in the next 5 years
 - https://www.youtube.com/watch?v=suOzNeMJXl0
 
 Phoenix 1.3 announcement:
