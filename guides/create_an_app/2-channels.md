@@ -160,4 +160,4 @@ What we have done here is create an empty **div** that will list all the chat me
 
 Now go to http://localhost:4000 and see the results!
 
-After all these steps your code should looks like in [Example app step 2 - channels](https://github.com/Taste-Elixir/workshops-app/tree/2-channels)
+After all these steps your code should look like in [Example app step 2 - channels](https://github.com/Taste-Elixir/workshops-app/tree/2-channels)
