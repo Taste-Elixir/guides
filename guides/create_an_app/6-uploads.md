@@ -1,6 +1,6 @@
 # 6. Uploads
 
-If we want to have a chat application, we need to have an ability to send a funny GIF to our friends.
+There is no good chat application without the ability to send funny GIFs. So. let's implement this.
 
 ## File input
 
@@ -23,7 +23,6 @@ Now, we need to send a file to the server. First, we will open: `assets/js/socke
 ```javascript
 let fileInput = $('#file-input');
 ```
-
 
 Then we need to initiate a Javascript object called `FileReader`, that will read a content of the file. You might have a look on the documentation of [FileReader](https://developer.mozilla.org/en-US/docs/Web/API/FileReader). We will add following line to initiate it:
 
