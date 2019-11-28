@@ -8,7 +8,7 @@
     <meta name="project" content="Taste Elixir v0.1.0">
     <title>6. Uploads — Taste Elixir v0.1.0</title>
     <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-4b350b71ce.js"></script>
+    <script src="dist/sidebar_items-eb62a52fa6.js"></script>
     <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
   </head>
   <body data-type="extras">
@@ -94,7 +94,7 @@ filereader.onload = function () {
     message.val(&#39;&#39;);
 }</code></pre>
 <p>Go to the file: <code class="inline">lib/workshops_app_web/channels/general_channel.ex</code> and add a following line to the function, handling messages:</p>
-<pre><code class="nohighlight makeup elixir"><span class="nc">IO</span><span class="o">.</span><span class="n">inspect</span><span class="p" data-group-id="7134603821-1">(</span><span class="n">payload</span><span class="p">,</span><span class="w"> </span><span class="ss">label</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;PAYLOAD&quot;</span><span class="p" data-group-id="7134603821-1">)</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="nc">IO</span><span class="o">.</span><span class="n">inspect</span><span class="p" data-group-id="5751891020-1">(</span><span class="n">payload</span><span class="p">,</span><span class="w"> </span><span class="ss">label</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;PAYLOAD&quot;</span><span class="p" data-group-id="5751891020-1">)</span></code></pre>
 <p>Now, let&#39;s try to send a message with a photo or a GIF. After this step, we should see a content of the file. Maybe you want to check the content of other variables with use of <code class="inline">IO.inspect</code> function?</p>
 <p><strong>Coach:</strong> Explain, when you usually use <code class="inline">IO.inspect</code> function.</p>
 <h2 id="receiving-the-file" class="section-heading">
