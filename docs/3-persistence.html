@@ -8,7 +8,7 @@
     <meta name="project" content="Taste Elixir v0.1.0">
     <title>3. Persistence — Taste Elixir v0.1.0</title>
     <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-abbcb6da05.js"></script>
+    <script src="dist/sidebar_items-4b350b71ce.js"></script>
     <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
   </head>
   <body data-type="extras">
@@ -74,12 +74,12 @@ Taste Elixir      </a>
 <p>First, we’ll create a migration and some code to handle persistence. Migrations are pieces of code that create or change database columns. In Phoenix, we can invoke <code class="inline">mix phx.gen.migration</code> from the terminal to generate a migration:</p>
 <pre><code class="console">$ mix ecto.gen.migration CreateMessages</code></pre>
 <p>Add to the change function, following code:</p>
-<pre><code class="nohighlight makeup elixir"><span class="n">create</span><span class="w"> </span><span class="n">table</span><span class="p" data-group-id="0693593132-1">(</span><span class="ss">:messages</span><span class="p" data-group-id="0693593132-1">)</span><span class="w"> </span><span class="k" data-group-id="0693593132-2">do</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="n">create</span><span class="w"> </span><span class="n">table</span><span class="p" data-group-id="4277755385-1">(</span><span class="ss">:messages</span><span class="p" data-group-id="4277755385-1">)</span><span class="w"> </span><span class="k" data-group-id="4277755385-2">do</span><span class="w">
     </span><span class="n">add</span><span class="w"> </span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="w">
     </span><span class="n">add</span><span class="w"> </span><span class="ss">:message</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="w">
 
-    </span><span class="n">timestamps</span><span class="p" data-group-id="0693593132-3">(</span><span class="p" data-group-id="0693593132-3">)</span><span class="w">
-</span><span class="k" data-group-id="0693593132-2">end</span></code></pre>
+    </span><span class="n">timestamps</span><span class="p" data-group-id="4277755385-3">(</span><span class="p" data-group-id="4277755385-3">)</span><span class="w">
+</span><span class="k" data-group-id="4277755385-2">end</span></code></pre>
 <p><code class="inline">:messages</code> - name for table in database.</p>
 <p><code class="inline">:name</code>, <code class="inline">:message</code> - columns in the database table.</p>
 <p><code class="inline">:string</code> - field type. More on DB types you can find: <a href="https://hexdocs.pm/ecto/Ecto.Schema.html#module-primitive-types">Ecto types</a></p>
@@ -87,57 +87,69 @@ Taste Elixir      </a>
 <pre><code class="console">$ mix ecto.migrate</code></pre>
 <p><strong>Coach:</strong> Explain, what is changeset? Why do we validate fields?</p>
 <p>We need to define a module, that will map the database fields into an Elixir struct. Create a file, called: <code class="inline">message.ex</code> in the directory: <code class="inline">lib/workshops_app/conversations</code>.</p>
-<pre><code class="nohighlight makeup elixir"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">WorkshopsApp.Conversations.Message</span><span class="w"> </span><span class="k" data-group-id="1787424765-1">do</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">WorkshopsApp.Conversations.Message</span><span class="w"> </span><span class="k" data-group-id="9731487124-1">do</span><span class="w">
   </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ecto.Schema</span><span class="w">
   </span><span class="kn">import</span><span class="w"> </span><span class="nc">Ecto.Changeset</span><span class="w">
 
-  </span><span class="n">schema</span><span class="w"> </span><span class="s">&quot;messages&quot;</span><span class="w"> </span><span class="k" data-group-id="1787424765-2">do</span><span class="w">
+  </span><span class="n">schema</span><span class="w"> </span><span class="s">&quot;messages&quot;</span><span class="w"> </span><span class="k" data-group-id="9731487124-2">do</span><span class="w">
     </span><span class="n">field</span><span class="w"> </span><span class="ss">:message</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="w">
     </span><span class="n">field</span><span class="w"> </span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="w">
 
-    </span><span class="n">timestamps</span><span class="p" data-group-id="1787424765-3">(</span><span class="p" data-group-id="1787424765-3">)</span><span class="w">
-  </span><span class="k" data-group-id="1787424765-2">end</span><span class="w">
+    </span><span class="n">timestamps</span><span class="p" data-group-id="9731487124-3">(</span><span class="p" data-group-id="9731487124-3">)</span><span class="w">
+  </span><span class="k" data-group-id="9731487124-2">end</span><span class="w">
 
   </span><span class="na">@doc</span><span class="w"> </span><span class="no">false</span><span class="w">
-  </span><span class="kd">def</span><span class="w"> </span><span class="nf">changeset</span><span class="p" data-group-id="1787424765-4">(</span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="n">attrs</span><span class="p" data-group-id="1787424765-4">)</span><span class="w"> </span><span class="k" data-group-id="1787424765-5">do</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">changeset</span><span class="p" data-group-id="9731487124-4">(</span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="n">attrs</span><span class="p" data-group-id="9731487124-4">)</span><span class="w"> </span><span class="k" data-group-id="9731487124-5">do</span><span class="w">
     </span><span class="n">message</span><span class="w">
-    </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">cast</span><span class="p" data-group-id="1787424765-6">(</span><span class="n">attrs</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1787424765-7">[</span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="ss">:message</span><span class="p" data-group-id="1787424765-7">]</span><span class="p" data-group-id="1787424765-6">)</span><span class="w">
-    </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">validate_required</span><span class="p" data-group-id="1787424765-8">(</span><span class="p" data-group-id="1787424765-9">[</span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="ss">:message</span><span class="p" data-group-id="1787424765-9">]</span><span class="p" data-group-id="1787424765-8">)</span><span class="w">
-  </span><span class="k" data-group-id="1787424765-5">end</span><span class="w">
-</span><span class="k" data-group-id="1787424765-1">end</span></code></pre>
+    </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">cast</span><span class="p" data-group-id="9731487124-6">(</span><span class="n">attrs</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9731487124-7">[</span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="ss">:message</span><span class="p" data-group-id="9731487124-7">]</span><span class="p" data-group-id="9731487124-6">)</span><span class="w">
+    </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">validate_required</span><span class="p" data-group-id="9731487124-8">(</span><span class="p" data-group-id="9731487124-9">[</span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="ss">:message</span><span class="p" data-group-id="9731487124-9">]</span><span class="p" data-group-id="9731487124-8">)</span><span class="w">
+  </span><span class="k" data-group-id="9731487124-5">end</span><span class="w">
+</span><span class="k" data-group-id="9731487124-1">end</span></code></pre>
 <p>Let&#39;s create a module, where we will create a message. Create a file, called: <code class="inline">conversations.ex</code> in the directory: <code class="inline">lib/workshops_app/</code>.</p>
-<pre><code class="nohighlight makeup elixir"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">WorkshopsApp.Conversations</span><span class="w"> </span><span class="k" data-group-id="0367524220-1">do</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">WorkshopsApp.Conversations</span><span class="w"> </span><span class="k" data-group-id="3077282233-1">do</span><span class="w">
   </span><span class="kn">import</span><span class="w"> </span><span class="nc">Ecto.Query</span><span class="p">,</span><span class="w"> </span><span class="ss">warn</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="w">
   </span><span class="kn">alias</span><span class="w"> </span><span class="nc">WorkshopsApp.Repo</span><span class="w">
 
   </span><span class="kn">alias</span><span class="w"> </span><span class="nc">WorkshopsApp.Conversations.Message</span><span class="w">
 
-  </span><span class="kd">def</span><span class="w"> </span><span class="nf">create_message</span><span class="p" data-group-id="0367524220-2">(</span><span class="n">attrs</span><span class="w"> </span><span class="o">\\</span><span class="w"> </span><span class="p" data-group-id="0367524220-3">%{</span><span class="p" data-group-id="0367524220-3">}</span><span class="p" data-group-id="0367524220-2">)</span><span class="w"> </span><span class="k" data-group-id="0367524220-4">do</span><span class="w">
-    </span><span class="p" data-group-id="0367524220-5">%</span><span class="nc" data-group-id="0367524220-5">Message</span><span class="p" data-group-id="0367524220-5">{</span><span class="p" data-group-id="0367524220-5">}</span><span class="w">
-    </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Message</span><span class="o">.</span><span class="n">changeset</span><span class="p" data-group-id="0367524220-6">(</span><span class="n">attrs</span><span class="p" data-group-id="0367524220-6">)</span><span class="w">
-    </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Repo</span><span class="o">.</span><span class="n">insert</span><span class="p" data-group-id="0367524220-7">(</span><span class="p" data-group-id="0367524220-7">)</span><span class="w">
-  </span><span class="k" data-group-id="0367524220-4">end</span><span class="w">
-</span><span class="k" data-group-id="0367524220-1">end</span></code></pre>
-<h1>Creating our messages in the Database</h1>
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">create_message</span><span class="p" data-group-id="3077282233-2">(</span><span class="n">attrs</span><span class="w"> </span><span class="o">\\</span><span class="w"> </span><span class="p" data-group-id="3077282233-3">%{</span><span class="p" data-group-id="3077282233-3">}</span><span class="p" data-group-id="3077282233-2">)</span><span class="w"> </span><span class="k" data-group-id="3077282233-4">do</span><span class="w">
+    </span><span class="p" data-group-id="3077282233-5">%</span><span class="nc" data-group-id="3077282233-5">Message</span><span class="p" data-group-id="3077282233-5">{</span><span class="p" data-group-id="3077282233-5">}</span><span class="w">
+    </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Message</span><span class="o">.</span><span class="n">changeset</span><span class="p" data-group-id="3077282233-6">(</span><span class="n">attrs</span><span class="p" data-group-id="3077282233-6">)</span><span class="w">
+    </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Repo</span><span class="o">.</span><span class="n">insert</span><span class="p" data-group-id="3077282233-7">(</span><span class="p" data-group-id="3077282233-7">)</span><span class="w">
+  </span><span class="k" data-group-id="3077282233-4">end</span><span class="w">
+</span><span class="k" data-group-id="3077282233-1">end</span></code></pre>
+<h2 id="creating-our-messages-in-the-database" class="section-heading">
+  <a href="#creating-our-messages-in-the-database" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Creating our messages in the Database
+</h2>
+
 <p><strong>Coach:</strong> Explain, what is CRUD.</p>
 <p>Next, we need to save the messages as they come in. If you are not familiar with programming this is create in the CRUD (acronym for: create, read, update, and delete). In <code class="inline">lib/workshops_app_web/channels/general_channel.ex</code>, we can add a call to do it.</p>
-<pre><code class="nohighlight makeup elixir"><span class="kd">def</span><span class="w"> </span><span class="nf">handle_in</span><span class="p" data-group-id="6719629182-1">(</span><span class="s">&quot;shout&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="6719629182-1">)</span><span class="w"> </span><span class="k" data-group-id="6719629182-2">do</span><span class="w">
-  </span><span class="nc">WorkshopsApp.Conversations</span><span class="o">.</span><span class="n">create_message</span><span class="p" data-group-id="6719629182-3">(</span><span class="n">payload</span><span class="p" data-group-id="6719629182-3">)</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="kd">def</span><span class="w"> </span><span class="nf">handle_in</span><span class="p" data-group-id="3053801797-1">(</span><span class="s">&quot;shout&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="3053801797-1">)</span><span class="w"> </span><span class="k" data-group-id="3053801797-2">do</span><span class="w">
+  </span><span class="nc">WorkshopsApp.Conversations</span><span class="o">.</span><span class="n">create_message</span><span class="p" data-group-id="3053801797-3">(</span><span class="n">payload</span><span class="p" data-group-id="3053801797-3">)</span><span class="w">
   </span><span class="n">broadcast</span><span class="w"> </span><span class="n">socket</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;shout&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="w">
-  </span><span class="p" data-group-id="6719629182-4">{</span><span class="ss">:noreply</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="6719629182-4">}</span><span class="w">
-</span><span class="k" data-group-id="6719629182-2">end</span></code></pre>
+  </span><span class="p" data-group-id="3053801797-4">{</span><span class="ss">:noreply</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="3053801797-4">}</span><span class="w">
+</span><span class="k" data-group-id="3053801797-2">end</span></code></pre>
 <p>Checkout your terminal, where you should see logs of your application. You should see that your messages are stored in the database.</p>
 <p><strong>Coach:</strong> Explain, what is logging and when do we use logs?</p>
-<h1>Refactor</h1>
+<h2 id="refactor" class="section-heading">
+  <a href="#refactor" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Refactor
+</h2>
+
 <p><strong>Coach:</strong> Explain, what is refactoring.</p>
 <p>The above code is alright, but if we want to scale our application we will start to have a problem as all the saves to the database will slow down the request cycle and keep us from handling the traffic efficiently. Elixir has some built in tools for dealing with exactly this situation. Specifically, <code class="inline">Kernel.spawn</code>, which takes a module, a function, and arguments to pass to the function. So we’ll update our handler to:</p>
-<pre><code class="nohighlight makeup elixir"><span class="kd">def</span><span class="w"> </span><span class="nf">handle_in</span><span class="p" data-group-id="0516957807-1">(</span><span class="s">&quot;shout&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="0516957807-1">)</span><span class="w"> </span><span class="k" data-group-id="0516957807-2">do</span><span class="w">
-  </span><span class="n">spawn</span><span class="p" data-group-id="0516957807-3">(</span><span class="nc">WorkshopsApp.Conversations</span><span class="p">,</span><span class="w"> </span><span class="ss">:create_message</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0516957807-4">[</span><span class="n">payload</span><span class="p" data-group-id="0516957807-4">]</span><span class="p" data-group-id="0516957807-3">)</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="kd">def</span><span class="w"> </span><span class="nf">handle_in</span><span class="p" data-group-id="6733092611-1">(</span><span class="s">&quot;shout&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="6733092611-1">)</span><span class="w"> </span><span class="k" data-group-id="6733092611-2">do</span><span class="w">
+  </span><span class="n">spawn</span><span class="p" data-group-id="6733092611-3">(</span><span class="nc">WorkshopsApp.Conversations</span><span class="p">,</span><span class="w"> </span><span class="ss">:create_message</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6733092611-4">[</span><span class="n">payload</span><span class="p" data-group-id="6733092611-4">]</span><span class="p" data-group-id="6733092611-3">)</span><span class="w">
   </span><span class="n">broadcast!</span><span class="w"> </span><span class="n">socket</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;shout&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="w">
-  </span><span class="p" data-group-id="0516957807-5">{</span><span class="ss">:noreply</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="0516957807-5">}</span><span class="w">
-</span><span class="k" data-group-id="0516957807-2">end</span></code></pre>
+  </span><span class="p" data-group-id="6733092611-5">{</span><span class="ss">:noreply</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="6733092611-5">}</span><span class="w">
+</span><span class="k" data-group-id="6733092611-2">end</span></code></pre>
 <p>What this does is spawn an elixir process to do the save, outside of the request cycle. Since we don’t need to see the results of the save to broadcast the message, there’s no reason to wait for it.</p>
-<h1>Using generator</h1>
+<h2 id="using-generator" class="section-heading">
+  <a href="#using-generator" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Using generator
+</h2>
+
 <p>Above steps might be achieved also using a generator.</p>
 <pre><code class="console">$ mix phx.gen.context Conversations Message messages name:string message:string</code></pre>
 <p>Explanation on that command:</p>
@@ -145,7 +157,11 @@ Taste Elixir      </a>
 Message - the schema name.
 messages - name for the table in the database.
 name:string and message:string - columns and datatypes.</p>
-<h1>Further steps</h1>
+<h2 id="further-steps" class="section-heading">
+  <a href="#further-steps" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Further steps
+</h2>
+
 <p>Try to think about some validations, we might add to the chat. Maybe we want to store only messages, which are shorter than 100 characters?</p>
 <p>Have a look on the documentation about <a href="https://hexdocs.pm/ecto/Ecto.Changeset.html#content">Ecto changeset</a>. Do you find a function you might use to validate a message?</p>
 <p><strong>Coach:</strong> Explain, what is validation and help mentees add some validations to the chat messages.</p>
