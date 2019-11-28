@@ -8,7 +8,7 @@
     <meta name="project" content="Taste Elixir v0.1.0">
     <title>6. Uploads — Taste Elixir v0.1.0</title>
     <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-efdc8f7389.js"></script>
+    <script src="dist/sidebar_items-abbcb6da05.js"></script>
     <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
   </head>
   <body data-type="extras">
@@ -65,7 +65,51 @@ Taste Elixir      </a>
     <div id="content" class="content-inner">
 
 <h1>6. Uploads</h1>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue, pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare, ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam viverra nisi, in interdum massa nibh nec erat.</p>
+<p>There is no good chat application without the ability to send funny GIFs. So. let&#39;s implement this.</p>
+<h2 id="file-input" class="section-heading">
+  <a href="#file-input" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  File input
+</h2>
+
+<p>We will start with adding an input for sending a file. Let&#39;s open the file: <code class="inline">lib/workshops_app_web/templates/page/index.html.eex</code> and add the input for the file:</p>
+<pre><code class="html">  &lt;div&gt;
+    &lt;input type=&#39;file&#39; id=&#39;file-input&#39; class=&#39;form-control&#39; /&gt;
+  &lt;/div&gt;</code></pre>
+<p>Now, let&#39;s run a server. You should see an input, where you can click and choose a file. Even we choose a file and try to send a message, the file won&#39;t be sent.</p>
+<h2 id="sending-file" class="section-heading">
+  <a href="#sending-file" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Sending file
+</h2>
+
+<p><strong>Coach:</strong> Explain, what is CSS selector.</p>
+<p>Now, we need to send a file to the server. First, we will open: <code class="inline">assets/js/socket.js</code>, where there is a logic connected with sending messages. We will add a selector for the file input. Let&#39;s add it, where all other selectors are initiated:</p>
+<pre><code class="javascript">let fileInput = $(&#39;#file-input&#39;);</code></pre>
+<p>Then we need to initiate a Javascript object called <code class="inline">FileReader</code>, that will read a content of the file. You might have a look on the documentation of <a href="https://developer.mozilla.org/en-US/docs/Web/API/FileReader">FileReader</a>. We will add following line to initiate it:</p>
+<pre><code class="javascript">var filereader  = new FileReader();</code></pre>
+<p>Now, we need to modify an event handler, that waits on pressing &quot;ENTER&quot;. Replace it with the following code:</p>
+<pre><code class="javascript">filereader.readAsDataURL($(&quot;#file-input&quot;).prop(&#39;files&#39;)[0]);
+
+filereader.onload = function () {
+    channel.push(&#39;shout&#39;, { name: name.val(), message: message.val(), file: filereader.result });
+    message.val(&#39;&#39;);
+}</code></pre>
+<p>Go to the file: <code class="inline">lib/workshops_app_web/channels/general_channel.ex</code> and add a following line to the function, handling messages:</p>
+<pre><code class="nohighlight makeup elixir"><span class="nc">IO</span><span class="o">.</span><span class="n">inspect</span><span class="p" data-group-id="1672799281-1">(</span><span class="n">payload</span><span class="p">,</span><span class="w"> </span><span class="ss">label</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;PAYLOAD&quot;</span><span class="p" data-group-id="1672799281-1">)</span></code></pre>
+<p>Now, let&#39;s try to send a message with a photo or a GIF. After this step, we should see a content of the file. Maybe you want to check the content of other variables with use of <code class="inline">IO.inspect</code> function?</p>
+<p><strong>Coach:</strong> Explain, when you usually use <code class="inline">IO.inspect</code> function.</p>
+<h2 id="receiving-the-file" class="section-heading">
+  <a href="#receiving-the-file" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Receiving the file
+</h2>
+
+<p>Now, we need to show the file, we receive. Let&#39;s go to the file: <code class="inline">assets/js/socket.js</code>. We will modify a handler, responsible for receiving messages. Find a block:</p>
+<pre><code class="javascript">channel.on(&#39;shout&#39;, payload =&gt; {
+
+}</code></pre>
+<p>And add a line:</p>
+<pre><code class="javascript">list.append(`&lt;img src=${payload.file} /&gt;`)</code></pre>
+<p>Now, let&#39;s invite other people to join your chat application and send them a funny GIF!</p>
+<p>After all these steps your code should look like this <a href="https://github.com/Taste-Elixir/workshops-app/tree/6-uploads">Example app step 6 - uploads</a></p>
       <footer class="footer">
         <p>
           <span class="line">
