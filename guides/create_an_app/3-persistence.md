@@ -74,7 +74,7 @@ defmodule WorkshopsApp.Conversations do
 end
 ```
 
-# Creating our messages in the Database
+## Creating our messages in the Database
 
 **Coach:** Explain, what is CRUD.
 
@@ -92,7 +92,7 @@ Checkout your terminal, where you should see logs of your application. You shoul
 
 **Coach:** Explain, what is logging and when do we use logs?
 
-# Refactor
+## Refactor
 
 **Coach:** Explain, what is refactoring.
 
@@ -108,7 +108,7 @@ end
 
 What this does is spawn an elixir process to do the save, outside of the request cycle. Since we don’t need to see the results of the save to broadcast the message, there’s no reason to wait for it.
 
-# Using generator
+## Using generator
 
 Above steps might be achieved also using a generator.
 ```console
@@ -122,7 +122,7 @@ Message - the schema name.
 messages - name for the table in the database.
 name:string and message:string - columns and datatypes.
 
-# Further steps
+## Further steps
 
 Try to think about some validations, we might add to the chat. Maybe we want to store only messages, which are shorter than 100 characters?
 
