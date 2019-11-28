@@ -31,11 +31,13 @@ We now know that a message identified by the atom `:after_join` is being sent. P
   def handle_info(:after_join, socket) do
     messages =
       WorkshopsApp.Conversations.list_messages()
-      |> Enum.map(fn(m) -> %{message: m.message, name: m.name} end)
+      |> Enum.map(fn(%{message: message, name: name}) -> %{message: message, name: name} end)
     push socket, "messages_history", %{messages: messages}
     {:noreply, socket}
   end
 ```
+
+**Coach:** Please explain concept and above example of pattern matching.
 
 **Coach:** Please explain `&` operator for function shorthand.
 
