@@ -39,8 +39,6 @@ We now know that a message identified by the atom `:after_join` is being sent. P
 
 **Coach:** Please explain concept and above example of pattern matching.
 
-**Coach:** Please explain `&` operator for function shorthand.
-
 The only missing thing is `WorkshopsApp.Conversations.list_messages()` (we should get compilation error when function is called but not definied). To have everything working as expected, we need to add function, which will list all messages stored in our database. Let's open `WorkshopsApp.Conversations` module and put there:
 
 ```elixir
