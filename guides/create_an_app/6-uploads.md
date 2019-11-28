@@ -69,4 +69,4 @@ list.append(`<img src=${payload.file} />`)
 
 Now, let's invite other people to join your chat application and send them a funny GIF!
 
-After all these steps your code should look like this [Example app step 6 - query](https://github.com/Taste-Elixir/workshops-app/tree/6-uploads)
+After all these steps your code should look like this [Example app step 6 - uploads](https://github.com/Taste-Elixir/workshops-app/tree/6-uploads)
