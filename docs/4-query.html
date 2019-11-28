@@ -8,7 +8,7 @@
     <meta name="project" content="Taste Elixir v0.1.0">
     <title>4. Query — Taste Elixir v0.1.0</title>
     <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-9cdc70bd1e.js"></script>
+    <script src="dist/sidebar_items-efdc8f7389.js"></script>
     <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
   </head>
   <body data-type="extras">
@@ -65,8 +65,89 @@ Taste Elixir      </a>
     <div id="content" class="content-inner">
 
 <h1>4. Query</h1>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue, pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare, ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam viverra nisi, in interdum massa nibh nec erat.</p>
+<h2 id="retrieving-from-database" class="section-heading">
+  <a href="#retrieving-from-database" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Retrieving from database
+</h2>
+
+<p>Every time, when refreshing your page, you lose the message history. This is not an ideal situation when you want to see what has been written. We have all these stored messages in our database and we want to retrieve them when someone logs in. Therefore, we will need to retrieve these messages and display them in the chat dialogue.</p>
+<h2 id="perform-a-callback-after_join" class="section-heading">
+  <a href="#perform-a-callback-after_join" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Perform a callback <code class="inline">after_join</code>.
+</h2>
+
+<p>Go to the join function, and add the line just below <code class="inline">if authorized?(payload) do</code></p>
+<p>We are going to send a message contaning our <code class="inline">self</code> <em>PID(Process Identifier)</em> as the first parameter. The second parameter is a message to run a function called <code class="inline">after_join</code>. This function is identified by an atom type.
+Add this line to function inside <code class="inline">lib/workshops_app_web/channels/general_channel.ex</code></p>
+<pre><code class="nohighlight makeup elixir"><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="nf">join</span><span class="p" data-group-id="1086432989-1">(</span><span class="s">&quot;random:lobby&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="1086432989-1">)</span><span class="w"> </span><span class="k" data-group-id="1086432989-2">do</span><span class="w">
+    </span><span class="k">if</span><span class="w"> </span><span class="n">authorized?</span><span class="p" data-group-id="1086432989-3">(</span><span class="n">payload</span><span class="p" data-group-id="1086432989-3">)</span><span class="w"> </span><span class="k" data-group-id="1086432989-4">do</span><span class="w">
+      </span><span class="n">send</span><span class="p" data-group-id="1086432989-5">(</span><span class="n">self</span><span class="p" data-group-id="1086432989-6">(</span><span class="p" data-group-id="1086432989-6">)</span><span class="p">,</span><span class="w"> </span><span class="ss">:after_join</span><span class="p" data-group-id="1086432989-5">)</span><span class="w"> </span><span class="c1"># &lt;-- Add this line</span><span class="w">
+      </span><span class="p" data-group-id="1086432989-7">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="1086432989-7">}</span><span class="w">
+    </span><span class="k" data-group-id="1086432989-4">else</span><span class="w">
+      </span><span class="p" data-group-id="1086432989-8">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1086432989-9">%{</span><span class="ss">reason</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;unauthorized&quot;</span><span class="p" data-group-id="1086432989-9">}</span><span class="p" data-group-id="1086432989-8">}</span><span class="w">
+    </span><span class="k" data-group-id="1086432989-4">end</span><span class="w">
+  </span><span class="k" data-group-id="1086432989-2">end</span></code></pre>
+<h3 id="what-does-send-do" class="section-heading">
+  <a href="#what-does-send-do" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  What does send do?
+</h3>
+
+<p><code class="inline">send</code> sends a message <code class="inline">:after_join</code>, with it&#39;s PID generated by the function <code class="inline">self()</code>. We want to be able to run that after join task asynchronously. Lets look at how we should receive the <code class="inline">:after_join</code> message.</p>
+<h2 id="receiving-a-message-in-a-callback" class="section-heading">
+  <a href="#receiving-a-message-in-a-callback" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Receiving a message in a callback
+</h2>
+
+<p>We now know that a message identified by the atom <code class="inline">:after_join</code> is being sent. Phoenix provides us with a function called <code class="inline">handle_info</code> to be able to receive that message and do something with it. Insert the following code after the <code class="inline">join</code> function.</p>
+<pre><code class="nohighlight makeup elixir"><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="nf">handle_info</span><span class="p" data-group-id="1453397487-1">(</span><span class="ss">:after_join</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="1453397487-1">)</span><span class="w"> </span><span class="k" data-group-id="1453397487-2">do</span><span class="w">
+    </span><span class="n">messages</span><span class="w"> </span><span class="o">=</span><span class="w">
+      </span><span class="nc">WorkshopsApp.Conversations</span><span class="o">.</span><span class="n">list_messages</span><span class="p" data-group-id="1453397487-3">(</span><span class="p" data-group-id="1453397487-3">)</span><span class="w">
+      </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">map</span><span class="p" data-group-id="1453397487-4">(</span><span class="k" data-group-id="1453397487-5">fn</span><span class="p" data-group-id="1453397487-6">(</span><span class="p" data-group-id="1453397487-7">%{</span><span class="ss">message</span><span class="p">:</span><span class="w"> </span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="n">name</span><span class="p" data-group-id="1453397487-7">}</span><span class="p" data-group-id="1453397487-6">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p" data-group-id="1453397487-8">%{</span><span class="ss">message</span><span class="p">:</span><span class="w"> </span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="n">name</span><span class="p" data-group-id="1453397487-8">}</span><span class="w"> </span><span class="k" data-group-id="1453397487-5">end</span><span class="p" data-group-id="1453397487-4">)</span><span class="w">
+    </span><span class="n">push</span><span class="w"> </span><span class="n">socket</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;messages_history&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1453397487-9">%{</span><span class="ss">messages</span><span class="p">:</span><span class="w"> </span><span class="n">messages</span><span class="p" data-group-id="1453397487-9">}</span><span class="w">
+    </span><span class="p" data-group-id="1453397487-10">{</span><span class="ss">:noreply</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="1453397487-10">}</span><span class="w">
+  </span><span class="k" data-group-id="1453397487-2">end</span></code></pre>
+<p><strong>Coach:</strong> Please explain concept and above example of pattern matching.</p>
+<p>The only missing thing is <code class="inline">WorkshopsApp.Conversations.list_messages()</code> (we should get compilation error when function is called but not definied). To have everything working as expected, we need to add function, which will list all messages stored in our database. Let&#39;s open <code class="inline">WorkshopsApp.Conversations</code> module and put there:</p>
+<pre><code class="nohighlight makeup elixir"><span class="kd">def</span><span class="w"> </span><span class="nf">list_messages</span><span class="w"> </span><span class="k" data-group-id="8805119367-1">do</span><span class="w">
+  </span><span class="nc">Repo</span><span class="o">.</span><span class="n">all</span><span class="p" data-group-id="8805119367-2">(</span><span class="nc">Message</span><span class="p" data-group-id="8805119367-2">)</span><span class="w">
+</span><span class="k" data-group-id="8805119367-1">end</span><span class="w">
+</span></code></pre>
+<p><strong>Coach:</strong> Please explain briefly what compilation is and what is the difference between compile-time and runtime.</p>
+<p><strong>Coach:</strong> Please say couple words about Repo and it&#39;s callbacks. </p>
+<h2 id="retrieving-all-messages-from-our-database" class="section-heading">
+  <a href="#retrieving-all-messages-from-our-database" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Retrieving all messages from our database
+</h2>
+
+<p>Phew, that looks like a lot is going on in the <code class="inline">handle_info</code> function. Let&#39;s break down the code to understand what is happening.</p>
+<p>Thanks to <code class="inline">list_messages()</code> function we can retrieve all the messages from our database.</p>
+<p>Then, we pipe the retrieved messages into a <code class="inline">map()</code> function provided by the <a href="https://hexdocs.pm/elixir/Enum.html"><code class="inline">Enum</code></a> module. <code class="inline">map</code> applies this anonymous function onto every element in messages.</p>
+<p><strong>Coach:</strong> Please explain how <code class="inline">Enum.map</code> works, if it&#39;s unclear. This is also a very good time to play with other functions from <a href="https://hexdocs.pm/elixir/Enum.html"><code class="inline">Enum</code></a> module.</p>
+<h2 id="passing-the-messages-back-to-the-browser" class="section-heading">
+  <a href="#passing-the-messages-back-to-the-browser" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Passing the messages back to the browser
+</h2>
+
+<p>Finally, we want to push our list of messages to the socket via the push function.</p>
+<p>We are using <code class="inline">push</code> instead of <code class="inline">broadcast</code>, because we only want to display it to the current user that has just joined the channel.</p>
+<h2 id="render-the-messages-in-the-browser" class="section-heading">
+  <a href="#render-the-messages-in-the-browser" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Render the messages in the browser
+</h2>
+
+<p>Add the below code to the <code class="inline">assets/js/socket.js</code> file.</p>
+<pre><code class="javascript">    channel.on(&#39;messages_history&#39;, messages =&gt; {
+      let messages_list = messages[&quot;messages&quot;];
+
+      messages_list.forEach( function(msg) {
+        list.append(`&lt;b&gt;${msg[&quot;name&quot;] || &#39;Anonymous&#39;}:&lt;/b&gt; ${msg[&quot;message&quot;]}&lt;br&gt;`);
+        list.prop({scrollTop: list.prop(&quot;scrollHeight&quot;)});
+      });
+    });</code></pre>
+<p>This is the final step, really. We need to display the messages in our browser by iterating through our list. You should have the history of messages displayed the moment you join the channel. Try opening multiple tabs connecting to <a href="http://localhost/4000">http://localhost/4000</a>.</p>
+<p>You will be able to see that all the messages get rendered every time you join.</p>
 <p>Based on: <a href="https://elixirgirls.com/guides/retrieve_message_history.html">https://elixirgirls.com/guides/retrieve_message_history.html</a></p>
+<p>After all these steps your code should look like this <a href="https://github.com/Taste-Elixir/workshops-app/tree/4-query">Example app step 4 - query</a></p>
       <footer class="footer">
         <p>
           <span class="line">
