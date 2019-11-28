@@ -7,7 +7,7 @@ In order to develop elixir applications, you will need to install elixir itself,
 1. Install asdf.
 Asdf is a manager of multiple language runtimes.
 
-Follow the installation steps on: [asdf installation guide](https://asdf-vm.com/#/core-manage-asdf-vm?id=install-asdf-vm) 
+Follow the installation steps on: [asdf installation guide](https://asdf-vm.com/#/core-manage-asdf-vm?id=install-asdf-vm)
 
 2. Install Postgres
 
@@ -159,3 +159,8 @@ This guide provides instructions for Windows 10.
   ```console
   mix archive.install hex phx_new 1.4.10
   ```
+## Cloud IDE
+
+In case any serious problems will show up when setting up the programming environment on a specific OS, a cloud IDE platform such as [Codeanywhere](http://codeanywhere.com/) can be used to code using the browser. Codeanywhere is a cross-platform Cloud IDE (integrated development environment) that enables users to instantly write, edit, collaborate and run web development projects from a web browser or any mobile device. For new users there is a 7-day free trial account.
+
+*Coach:* Help set up Elixir tech stack using Codeanywhere.
