@@ -133,15 +133,17 @@ channel.join()
 Next we will want to create the container for our messages. Open `lib/workshops_app_web/templates/page/index.html.eex`, and replace its contents with:
 
 ```html
-<div id='message-list' class='row'>
+<div class='row'>
+  <div id='message-list'>
+  </div>
 </div>
 
-<div class='row form-group'>
-  <div class='col-md-3'>
-    <input type='text' id='name' class='form-control' placeholder='Name' />
+<div class='row'>
+  <div>
+    <input type='text' id='name' placeholder='Name' />
   </div>
-  <div class='col-md-9'>
-    <input type='text' id='message' class='form-control' placeholder='Message' />
+  <div>
+    <input type='text' id='message' placeholder='Message' />
   </div>
 </div>
 ```
@@ -151,6 +153,7 @@ What we have done here is create an empty **div** that will list all the chat me
 ```css
 #message-list {
   border: 1px solid #777;
+  width: 100%;
   height: 400px;
   padding: 10px;
   overflow: scroll;
