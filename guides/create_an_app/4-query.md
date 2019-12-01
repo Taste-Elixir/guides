@@ -7,7 +7,7 @@ Every time, when refreshing your page, you lose the message history. This is not
 ## Perform a callback `after_join`.
 Go to the join function, and add the line just below `if authorized?(payload) do`
 
-We are going to send a message contaning our `self` *PID(Process Identifier)* as the first parameter. The second parameter is a message to run a function called `after_join`. This function is identified by an atom type.
+We are going to send a message containing our `self` *PID(Process Identifier)* as the first parameter. The second parameter is a message to run a function called `after_join`. This function is identified by an atom type.
 Add this line to function inside `lib/workshops_app_web/channels/general_channel.ex`
 
 ```elixir
@@ -39,7 +39,7 @@ We now know that a message identified by the atom `:after_join` is being sent. P
 
 **Coach:** Please explain concept and above example of pattern matching.
 
-The only missing thing is `WorkshopsApp.Conversations.list_messages()` (we should get compilation error when function is called but not definied). To have everything working as expected, we need to add function, which will list all messages stored in our database. Let's open `WorkshopsApp.Conversations` module and put there:
+The only missing thing is `WorkshopsApp.Conversations.list_messages()` (we should get compilation error when function is called but not defined). To have everything working as expected, we need to add function, which will list all messages stored in our database. Let's open `WorkshopsApp.Conversations` module and put there:
 
 ```elixir
 def list_messages do

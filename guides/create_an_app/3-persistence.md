@@ -132,4 +132,4 @@ Have a look on the documentation about [Ecto changeset](https://hexdocs.pm/ecto/
 
 Based on: https://elixirgirls.com/guides/persistence.html
 
-After all these steps your code should look like in [Example app step 3 - persistance](https://github.com/Taste-Elixir/workshops-app/tree/3-persistance)
+After all these steps your code should look like in [Example app step 3 - persistence](https://github.com/Taste-Elixir/workshops-app/tree/3-persistance)
