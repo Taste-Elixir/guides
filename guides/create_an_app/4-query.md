@@ -11,7 +11,7 @@ We are going to send a message contaning our `self` *PID(Process Identifier)* as
 Add this line to function inside `lib/workshops_app_web/channels/general_channel.ex`
 
 ```elixir
-  def join("random:lobby", payload, socket) do
+  def join("general:lobby", payload, socket) do
     if authorized?(payload) do
       send(self(), :after_join) # <-- Add this line
       {:ok, socket}
