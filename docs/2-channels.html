@@ -79,6 +79,7 @@ Taste Elixir      </a>
 </span><span class="c1"># channel &quot;room:*&quot;, WorkshopsAppWeb.RoomChannel</span><span class="w">
 </span><span class="n">channel</span><span class="w"> </span><span class="s">&quot;general:lobby&quot;</span><span class="p">,</span><span class="w"> </span><span class="nc">WorkshopsAppWeb.GeneralChannel</span></code></pre>
 <p>In our <code class="inline">lib/workshops_app_web/channels/general_channel.ex</code> we should have the following content:</p>
+<<<<<<< Updated upstream
 <pre><code class="nohighlight makeup elixir"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">WorkshopsAppWeb.GeneralChannel</span><span class="w"> </span><span class="k" data-group-id="9935749458-1">do</span><span class="w">
   </span><span class="kn">use</span><span class="w"> </span><span class="nc">WorkshopsAppWeb</span><span class="p">,</span><span class="w"> </span><span class="ss">:channel</span><span class="w">
 
@@ -108,6 +109,37 @@ Taste Elixir      </a>
     </span><span class="no">true</span><span class="w">
   </span><span class="k" data-group-id="9935749458-17">end</span><span class="w">
 </span><span class="k" data-group-id="9935749458-1">end</span></code></pre>
+=======
+<pre><code class="nohighlight makeup elixir"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">WorkshopsAppWeb.GeneralChannel</span><span class="w"> </span><span class="k" data-group-id="5727434422-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">WorkshopsAppWeb</span><span class="p">,</span><span class="w"> </span><span class="ss">:channel</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">join</span><span class="p" data-group-id="5727434422-2">(</span><span class="s">&quot;general:lobby&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="5727434422-2">)</span><span class="w"> </span><span class="k" data-group-id="5727434422-3">do</span><span class="w">
+    </span><span class="k">if</span><span class="w"> </span><span class="n">authorized?</span><span class="p" data-group-id="5727434422-4">(</span><span class="n">payload</span><span class="p" data-group-id="5727434422-4">)</span><span class="w"> </span><span class="k" data-group-id="5727434422-5">do</span><span class="w">
+      </span><span class="p" data-group-id="5727434422-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="5727434422-6">}</span><span class="w">
+    </span><span class="k" data-group-id="5727434422-5">else</span><span class="w">
+      </span><span class="p" data-group-id="5727434422-7">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5727434422-8">%{</span><span class="ss">reason</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;unauthorized&quot;</span><span class="p" data-group-id="5727434422-8">}</span><span class="p" data-group-id="5727434422-7">}</span><span class="w">
+    </span><span class="k" data-group-id="5727434422-5">end</span><span class="w">
+  </span><span class="k" data-group-id="5727434422-3">end</span><span class="w">
+
+  </span><span class="c1"># Channels can be used in a request/response fashion</span><span class="w">
+  </span><span class="c1"># by sending replies to requests from the client</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">handle_in</span><span class="p" data-group-id="5727434422-9">(</span><span class="s">&quot;ping&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="5727434422-9">)</span><span class="w"> </span><span class="k" data-group-id="5727434422-10">do</span><span class="w">
+    </span><span class="p" data-group-id="5727434422-11">{</span><span class="ss">:reply</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5727434422-12">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="p" data-group-id="5727434422-12">}</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="5727434422-11">}</span><span class="w">
+  </span><span class="k" data-group-id="5727434422-10">end</span><span class="w">
+
+  </span><span class="c1"># It is also common to receive messages from the client and</span><span class="w">
+  </span><span class="c1"># broadcast to everyone in the current topic (general:lobby).</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">handle_in</span><span class="p" data-group-id="5727434422-13">(</span><span class="s">&quot;shout&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="5727434422-13">)</span><span class="w"> </span><span class="k" data-group-id="5727434422-14">do</span><span class="w">
+    </span><span class="n">broadcast</span><span class="w"> </span><span class="n">socket</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;shout&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="w">
+    </span><span class="p" data-group-id="5727434422-15">{</span><span class="ss">:noreply</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="5727434422-15">}</span><span class="w">
+  </span><span class="k" data-group-id="5727434422-14">end</span><span class="w">
+
+  </span><span class="c1"># Add authorization logic here as required.</span><span class="w">
+  </span><span class="kd">defp</span><span class="w"> </span><span class="nf">authorized?</span><span class="p" data-group-id="5727434422-16">(</span><span class="c">_payload</span><span class="p" data-group-id="5727434422-16">)</span><span class="w"> </span><span class="k" data-group-id="5727434422-17">do</span><span class="w">
+    </span><span class="no">true</span><span class="w">
+  </span><span class="k" data-group-id="5727434422-17">end</span><span class="w">
+</span><span class="k" data-group-id="5727434422-1">end</span></code></pre>
+>>>>>>> Stashed changes
 <p>Now that we have generated some code let&#39;s look at what it does. First the <code class="inline">general_channel.ex</code> is the channel equivalent of a controller in Phoenix, being that it handles websocket requests instead of http requests. On line <strong>2</strong> <code class="inline">:channel</code> is referring to the Phoenix channel function from <code class="inline">user_socket.ex</code> file. It takes a parameter which is used as a namespace for the websocket connections. In this instance the namespace is <strong>&quot;general:lobby&quot;</strong>.</p>
 <p>The next argument <code class="inline">WorkshopsAppWeb.GeneralChannel</code> is made up of two parts. The first part <code class="inline">WorkshopsAppWeb</code> is the name of the app with <code class="inline">-Web</code> as suffix indicating that we have separate directory containing all the abstractions related to communication with outside world . The second part is <code class="inline">GeneralChannel</code>. This is the name of the module that handles the logic related to any communication through this channel. In Phoenix, it’s conventional to namespace all your modules with your app name first as this prevents namespace errors.</p>
 <p>The file, <code class="inline">user_socket.ex</code>, is like the <code class="inline">router.ex</code> file, but for channels. The topic, for us it&#39;s <code class="inline">general</code>, allows clients, also known as web browsers, to subscribe to the channel. In the same way a path in a web request directs the request to the right controller, the topic directs the socket to the right module, in this case, <code class="inline">WorkshopsAppWeb.GeneralChannel</code>.</p>
@@ -153,7 +185,7 @@ channel.on(&#39;shout&#39;, payload =&gt; {
 channel.join()
   .receive(&quot;ok&quot;, resp =&gt; { console.log(&quot;Joined successfully&quot;, resp) })
   .receive(&quot;error&quot;, resp =&gt; { console.log(&quot;Unable to join&quot;, resp) })</code></pre>
-<p><code class="inline">socket.channel(&quot;random:lobby&quot;, {})</code> sends the join request to the server, and the server sends the message back to the client. Here, we listen for a keypress event on the message text field. Whenever the user enters a message, it’s pushed on the channel and the text field is cleared. When there’s an incoming message on the channel, it’s appended to the <strong>div</strong> we previously created and scrolled to the bottom.</p>
+<p><code class="inline">socket.channel(&quot;general:lobby&quot;, {})</code> sends the join request to the server, and the server sends the message back to the client. Here, we listen for a keypress event on the message text field. Whenever the user enters a message, it’s pushed on the channel and the text field is cleared. When there’s an incoming message on the channel, it’s appended to the <strong>div</strong> we previously created and scrolled to the bottom.</p>
 <p>Next we will want to create the container for our messages. Open <code class="inline">lib/workshops_app_web/templates/page/index.html.eex</code>, and replace its contents with:</p>
 <pre><code class="html">&lt;div id=&#39;message-list&#39; class=&#39;row&#39;&gt;
 &lt;/div&gt;
