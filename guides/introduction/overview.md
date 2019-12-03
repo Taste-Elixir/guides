@@ -12,7 +12,7 @@ Depending on where you are on your programming journey, here are some additional
 
 A text editor is the core of every developer's toolbox, that's why it's important to choose it wisely.
 
-#### Visual Studio Code (Recomended)
+#### Visual Studio Code (Recommended)
 
 [Installation instruction.](https://code.visualstudio.com/docs/setup/setup-overview)
 
@@ -29,10 +29,10 @@ Recommended extensions to the editor that will ease the development workflow.
 - [Sublime](https://www.sublimetext.com)
 - [Textmate](https://macromates.com)
 - [Emacs](https://www.gnu.org/software/emacs/)
-- [Vim](https://www.vim.org) (not recommended for a begginers)
+- [Vim](https://www.vim.org) (not recommended for a beginners)
 
 
-### Git tools (comming soon)
+### Git tools (coming soon)
 
 ## Try Elixir
 

@@ -57,7 +57,7 @@ Now, we need to show the file, we receive. Let's go to the file: `assets/js/sock
 ```javascript
 channel.on('shout', payload => {
 
-}
+});
 ```
 
 And add a line:
