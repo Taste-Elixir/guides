@@ -128,7 +128,7 @@ channel.join()
   .receive("error", resp => { console.log("Unable to join", resp) })
 ```
 
-`socket.channel("random:lobby", {})` sends the join request to the server, and the server sends the message back to the client. Here, we listen for a keypress event on the message text field. Whenever the user enters a message, it’s pushed on the channel and the text field is cleared. When there’s an incoming message on the channel, it’s appended to the **div** we previously created and scrolled to the bottom.
+`socket.channel("general:lobby", {})` sends the join request to the server, and the server sends the message back to the client. Here, we listen for a keypress event on the message text field. Whenever the user enters a message, it’s pushed on the channel and the text field is cleared. When there’s an incoming message on the channel, it’s appended to the **div** we previously created and scrolled to the bottom.
 
 Next we will want to create the container for our messages. Open `lib/workshops_app_web/templates/page/index.html.eex`, and replace its contents with:
 
