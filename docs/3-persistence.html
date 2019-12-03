@@ -75,6 +75,7 @@ Taste Elixir      </a>
 <pre><code class="console">$ mix ecto.gen.migration CreateMessages</code></pre>
 <p>Add to the change function, following code:</p>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <pre><code class="nohighlight makeup elixir"><span class="n">create</span><span class="w"> </span><span class="n">table</span><span class="p" data-group-id="5996508634-1">(</span><span class="ss">:messages</span><span class="p" data-group-id="5996508634-1">)</span><span class="w"> </span><span class="k" data-group-id="5996508634-2">do</span><span class="w">
     </span><span class="n">add</span><span class="w"> </span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="w">
     </span><span class="n">add</span><span class="w"> </span><span class="ss">:message</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="w">
@@ -89,6 +90,14 @@ Taste Elixir      </a>
     </span><span class="n">timestamps</span><span class="p" data-group-id="6050669100-3">(</span><span class="p" data-group-id="6050669100-3">)</span><span class="w">
 </span><span class="k" data-group-id="6050669100-2">end</span></code></pre>
 >>>>>>> Stashed changes
+=======
+<pre><code class="nohighlight makeup elixir"><span class="n">create</span><span class="w"> </span><span class="n">table</span><span class="p" data-group-id="5558800991-1">(</span><span class="ss">:messages</span><span class="p" data-group-id="5558800991-1">)</span><span class="w"> </span><span class="k" data-group-id="5558800991-2">do</span><span class="w">
+    </span><span class="n">add</span><span class="w"> </span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="w">
+    </span><span class="n">add</span><span class="w"> </span><span class="ss">:message</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="w">
+
+    </span><span class="n">timestamps</span><span class="p" data-group-id="5558800991-3">(</span><span class="p" data-group-id="5558800991-3">)</span><span class="w">
+</span><span class="k" data-group-id="5558800991-2">end</span></code></pre>
+>>>>>>> Stashed changes
 <p><code class="inline">:messages</code> - name for table in database.</p>
 <p><code class="inline">:name</code>, <code class="inline">:message</code> - columns in the database table.</p>
 <p><code class="inline">:string</code> - field type. More on DB types you can find: <a href="https://hexdocs.pm/ecto/Ecto.Schema.html#module-primitive-types">Ecto types</a></p>
@@ -96,6 +105,7 @@ Taste Elixir      </a>
 <pre><code class="console">$ mix ecto.migrate</code></pre>
 <p><strong>Coach:</strong> Explain, what is changeset? Why do we validate fields?</p>
 <p>We need to define a module, that will map the database fields into an Elixir struct. Create a file, called: <code class="inline">message.ex</code> in the directory: <code class="inline">lib/workshops_app/conversations</code>.</p>
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <pre><code class="nohighlight makeup elixir"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">WorkshopsApp.Conversations.Message</span><span class="w"> </span><span class="k" data-group-id="8501971881-1">do</span><span class="w">
   </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ecto.Schema</span><span class="w">
@@ -139,11 +149,34 @@ Taste Elixir      </a>
 <p>Let&#39;s create a module, where we will create a message. Create a file, called: <code class="inline">conversations.ex</code> in the directory: <code class="inline">lib/workshops_app/</code>.</p>
 <pre><code class="nohighlight makeup elixir"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">WorkshopsApp.Conversations</span><span class="w"> </span><span class="k" data-group-id="1659646880-1">do</span><span class="w">
 >>>>>>> Stashed changes
+=======
+<pre><code class="nohighlight makeup elixir"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">WorkshopsApp.Conversations.Message</span><span class="w"> </span><span class="k" data-group-id="1293199260-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ecto.Schema</span><span class="w">
+  </span><span class="kn">import</span><span class="w"> </span><span class="nc">Ecto.Changeset</span><span class="w">
+
+  </span><span class="n">schema</span><span class="w"> </span><span class="s">&quot;messages&quot;</span><span class="w"> </span><span class="k" data-group-id="1293199260-2">do</span><span class="w">
+    </span><span class="n">field</span><span class="w"> </span><span class="ss">:message</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="w">
+    </span><span class="n">field</span><span class="w"> </span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="w">
+
+    </span><span class="n">timestamps</span><span class="p" data-group-id="1293199260-3">(</span><span class="p" data-group-id="1293199260-3">)</span><span class="w">
+  </span><span class="k" data-group-id="1293199260-2">end</span><span class="w">
+
+  </span><span class="na">@doc</span><span class="w"> </span><span class="no">false</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">changeset</span><span class="p" data-group-id="1293199260-4">(</span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="n">attrs</span><span class="p" data-group-id="1293199260-4">)</span><span class="w"> </span><span class="k" data-group-id="1293199260-5">do</span><span class="w">
+    </span><span class="n">message</span><span class="w">
+    </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">cast</span><span class="p" data-group-id="1293199260-6">(</span><span class="n">attrs</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1293199260-7">[</span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="ss">:message</span><span class="p" data-group-id="1293199260-7">]</span><span class="p" data-group-id="1293199260-6">)</span><span class="w">
+    </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">validate_required</span><span class="p" data-group-id="1293199260-8">(</span><span class="p" data-group-id="1293199260-9">[</span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="ss">:message</span><span class="p" data-group-id="1293199260-9">]</span><span class="p" data-group-id="1293199260-8">)</span><span class="w">
+  </span><span class="k" data-group-id="1293199260-5">end</span><span class="w">
+</span><span class="k" data-group-id="1293199260-1">end</span></code></pre>
+<p>Let&#39;s create a module, where we will create a message. Create a file, called: <code class="inline">conversations.ex</code> in the directory: <code class="inline">lib/workshops_app/</code>.</p>
+<pre><code class="nohighlight makeup elixir"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">WorkshopsApp.Conversations</span><span class="w"> </span><span class="k" data-group-id="7897776362-1">do</span><span class="w">
+>>>>>>> Stashed changes
   </span><span class="kn">import</span><span class="w"> </span><span class="nc">Ecto.Query</span><span class="p">,</span><span class="w"> </span><span class="ss">warn</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="w">
   </span><span class="kn">alias</span><span class="w"> </span><span class="nc">WorkshopsApp.Repo</span><span class="w">
 
   </span><span class="kn">alias</span><span class="w"> </span><span class="nc">WorkshopsApp.Conversations.Message</span><span class="w">
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
   </span><span class="kd">def</span><span class="w"> </span><span class="nf">create_message</span><span class="p" data-group-id="1728328568-2">(</span><span class="n">attrs</span><span class="w"> </span><span class="o">\\</span><span class="w"> </span><span class="p" data-group-id="1728328568-3">%{</span><span class="p" data-group-id="1728328568-3">}</span><span class="p" data-group-id="1728328568-2">)</span><span class="w"> </span><span class="k" data-group-id="1728328568-4">do</span><span class="w">
     </span><span class="p" data-group-id="1728328568-5">%</span><span class="nc" data-group-id="1728328568-5">Message</span><span class="p" data-group-id="1728328568-5">{</span><span class="p" data-group-id="1728328568-5">}</span><span class="w">
@@ -159,6 +192,14 @@ Taste Elixir      </a>
   </span><span class="k" data-group-id="1659646880-4">end</span><span class="w">
 </span><span class="k" data-group-id="1659646880-1">end</span></code></pre>
 >>>>>>> Stashed changes
+=======
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">create_message</span><span class="p" data-group-id="7897776362-2">(</span><span class="n">attrs</span><span class="w"> </span><span class="o">\\</span><span class="w"> </span><span class="p" data-group-id="7897776362-3">%{</span><span class="p" data-group-id="7897776362-3">}</span><span class="p" data-group-id="7897776362-2">)</span><span class="w"> </span><span class="k" data-group-id="7897776362-4">do</span><span class="w">
+    </span><span class="p" data-group-id="7897776362-5">%</span><span class="nc" data-group-id="7897776362-5">Message</span><span class="p" data-group-id="7897776362-5">{</span><span class="p" data-group-id="7897776362-5">}</span><span class="w">
+    </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Message</span><span class="o">.</span><span class="n">changeset</span><span class="p" data-group-id="7897776362-6">(</span><span class="n">attrs</span><span class="p" data-group-id="7897776362-6">)</span><span class="w">
+    </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Repo</span><span class="o">.</span><span class="n">insert</span><span class="p" data-group-id="7897776362-7">(</span><span class="p" data-group-id="7897776362-7">)</span><span class="w">
+  </span><span class="k" data-group-id="7897776362-4">end</span><span class="w">
+</span><span class="k" data-group-id="7897776362-1">end</span></code></pre>
+>>>>>>> Stashed changes
 <h2 id="creating-our-messages-in-the-database" class="section-heading">
   <a href="#creating-our-messages-in-the-database" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Creating our messages in the Database
@@ -166,6 +207,7 @@ Taste Elixir      </a>
 
 <p><strong>Coach:</strong> Explain, what is CRUD.</p>
 <p>Next, we need to save the messages as they come in. If you are not familiar with programming this is create in the CRUD (acronym for: create, read, update, and delete). In <code class="inline">lib/workshops_app_web/channels/general_channel.ex</code>, we can add a call to do it.</p>
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <pre><code class="nohighlight makeup elixir"><span class="kd">def</span><span class="w"> </span><span class="nf">handle_in</span><span class="p" data-group-id="9735634013-1">(</span><span class="s">&quot;shout&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="9735634013-1">)</span><span class="w"> </span><span class="k" data-group-id="9735634013-2">do</span><span class="w">
   </span><span class="nc">WorkshopsApp.Conversations</span><span class="o">.</span><span class="n">create_message</span><span class="p" data-group-id="9735634013-3">(</span><span class="n">payload</span><span class="p" data-group-id="9735634013-3">)</span><span class="w">
@@ -179,6 +221,13 @@ Taste Elixir      </a>
   </span><span class="p" data-group-id="7738755091-4">{</span><span class="ss">:noreply</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="7738755091-4">}</span><span class="w">
 </span><span class="k" data-group-id="7738755091-2">end</span></code></pre>
 >>>>>>> Stashed changes
+=======
+<pre><code class="nohighlight makeup elixir"><span class="kd">def</span><span class="w"> </span><span class="nf">handle_in</span><span class="p" data-group-id="6351484341-1">(</span><span class="s">&quot;shout&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="6351484341-1">)</span><span class="w"> </span><span class="k" data-group-id="6351484341-2">do</span><span class="w">
+  </span><span class="nc">WorkshopsApp.Conversations</span><span class="o">.</span><span class="n">create_message</span><span class="p" data-group-id="6351484341-3">(</span><span class="n">payload</span><span class="p" data-group-id="6351484341-3">)</span><span class="w">
+  </span><span class="n">broadcast</span><span class="w"> </span><span class="n">socket</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;shout&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="w">
+  </span><span class="p" data-group-id="6351484341-4">{</span><span class="ss">:noreply</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="6351484341-4">}</span><span class="w">
+</span><span class="k" data-group-id="6351484341-2">end</span></code></pre>
+>>>>>>> Stashed changes
 <p>Checkout your terminal, where you should see logs of your application. You should see that your messages are stored in the database.</p>
 <p><strong>Coach:</strong> Explain, what is logging and when do we use logs?</p>
 <h2 id="refactor" class="section-heading">
@@ -188,6 +237,7 @@ Taste Elixir      </a>
 
 <p><strong>Coach:</strong> Explain, what is refactoring.</p>
 <p>The above code is alright, but if we want to scale our application we will start to have a problem as all the saves to the database will slow down the request cycle and keep us from handling the traffic efficiently. Elixir has some built in tools for dealing with exactly this situation. Specifically, <code class="inline">Kernel.spawn</code>, which takes a module, a function, and arguments to pass to the function. So we’ll update our handler to:</p>
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <pre><code class="nohighlight makeup elixir"><span class="kd">def</span><span class="w"> </span><span class="nf">handle_in</span><span class="p" data-group-id="8947336162-1">(</span><span class="s">&quot;shout&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="8947336162-1">)</span><span class="w"> </span><span class="k" data-group-id="8947336162-2">do</span><span class="w">
   </span><span class="n">spawn</span><span class="p" data-group-id="8947336162-3">(</span><span class="nc">WorkshopsApp.Conversations</span><span class="p">,</span><span class="w"> </span><span class="ss">:create_message</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8947336162-4">[</span><span class="n">payload</span><span class="p" data-group-id="8947336162-4">]</span><span class="p" data-group-id="8947336162-3">)</span><span class="w">
@@ -200,6 +250,13 @@ Taste Elixir      </a>
   </span><span class="n">broadcast!</span><span class="w"> </span><span class="n">socket</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;shout&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="w">
   </span><span class="p" data-group-id="7454952478-5">{</span><span class="ss">:noreply</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="7454952478-5">}</span><span class="w">
 </span><span class="k" data-group-id="7454952478-2">end</span></code></pre>
+>>>>>>> Stashed changes
+=======
+<pre><code class="nohighlight makeup elixir"><span class="kd">def</span><span class="w"> </span><span class="nf">handle_in</span><span class="p" data-group-id="1893813874-1">(</span><span class="s">&quot;shout&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="1893813874-1">)</span><span class="w"> </span><span class="k" data-group-id="1893813874-2">do</span><span class="w">
+  </span><span class="n">spawn</span><span class="p" data-group-id="1893813874-3">(</span><span class="nc">WorkshopsApp.Conversations</span><span class="p">,</span><span class="w"> </span><span class="ss">:create_message</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1893813874-4">[</span><span class="n">payload</span><span class="p" data-group-id="1893813874-4">]</span><span class="p" data-group-id="1893813874-3">)</span><span class="w">
+  </span><span class="n">broadcast!</span><span class="w"> </span><span class="n">socket</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;shout&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="w">
+  </span><span class="p" data-group-id="1893813874-5">{</span><span class="ss">:noreply</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="1893813874-5">}</span><span class="w">
+</span><span class="k" data-group-id="1893813874-2">end</span></code></pre>
 >>>>>>> Stashed changes
 <p>What this does is spawn an elixir process to do the save, outside of the request cycle. Since we don’t need to see the results of the save to broadcast the message, there’s no reason to wait for it.</p>
 <h2 id="using-generator" class="section-heading">
@@ -223,7 +280,7 @@ name:string and message:string - columns and datatypes.</p>
 <p>Have a look on the documentation about <a href="https://hexdocs.pm/ecto/Ecto.Changeset.html#content">Ecto changeset</a>. Do you find a function you might use to validate a message?</p>
 <p><strong>Coach:</strong> Explain, what is validation and help mentees add some validations to the chat messages.</p>
 <p>Based on: <a href="https://elixirgirls.com/guides/persistence.html">https://elixirgirls.com/guides/persistence.html</a></p>
-<p>After all these steps your code should look like in <a href="https://github.com/Taste-Elixir/workshops-app/tree/3-persistance">Example app step 3 - persistance</a></p>
+<p>After all these steps your code should look like in <a href="https://github.com/Taste-Elixir/workshops-app/tree/3-persistance">Example app step 3 - persistence</a></p>
       <footer class="footer">
         <p>
           <span class="line">
