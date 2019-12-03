@@ -34,6 +34,7 @@ asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
 
 ```console
 asdf install erlang 22.1
+asdf global erlang 22.1
 ```
 
 5. Add a plugin for Elixir language:
@@ -46,6 +47,7 @@ asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
 
 ```console
 asdf install elixir 1.9.4-otp-22
+asdf global elixir 1.9.4-otp-22
 ```
 
 7. Add a plugin for NodeJS:
@@ -58,6 +60,7 @@ asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 
 ```
 asdf install nodejs 12.13.1
+asdf global nodejs 12.13.1
 ```
 
 9. Install Phoenix:
